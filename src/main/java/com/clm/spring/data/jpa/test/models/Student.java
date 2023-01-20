@@ -6,8 +6,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.UUID;
-
 @Entity
 @Data
 @NoArgsConstructor
@@ -18,8 +16,8 @@ public class Student {
 
     @Id
     @SequenceGenerator(name = "student_sequence", sequenceName = "student_sequence", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "student_sequence")
-    private UUID idStudent;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "student_sequence")
+    private Long idStudent;
 
     private String firstName;
     private String lastName;
