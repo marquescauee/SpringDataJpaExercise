@@ -55,4 +55,24 @@ class IStudentRepositoryTest {
         System.out.println(students);
     }
 
+    @Test
+    public void printStudentByFirstName() {
+        List<Student> students = studentRepository.findByFirstName(("Cauê"));
+
+        System.out.println(students);
+    }
+
+    @Test
+    public void getStudentByEmailAddress() {
+        Student student = studentRepository.getStudentByEmailAddress("caue@gmail.com");
+
+        System.out.println(student);
+    }
+
+    @Test
+    public void getStudentByInfoNativeNamedParam() {
+        Student student = studentRepository.getStudentByInfoNativeNamedParam("caue@gmail.com", "Cauê");
+
+        System.out.println(student);
+    }
 }
