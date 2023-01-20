@@ -1,5 +1,6 @@
 package com.clm.spring.data.jpa.test.repositories;
 
+import com.clm.spring.data.jpa.test.models.Guardian;
 import com.clm.spring.data.jpa.test.models.Student;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,9 +22,27 @@ class IStudentRepositoryTest {
                 .email("caue@gmail.com")
                 .firstName("Cauê")
                 .lastName("Marques")
-                .guardianName("Ana")
-                .guardianEmail("ana@gmail.com")
-                .guardianMobile("123729132983")
+                //.guardianName("Ana")
+                //.guardianEmail("ana@gmail.com")
+                //.guardianMobile("123729132983")
+                .build();
+
+        studentRepository.save(student);
+    }
+    @Test
+    public void saveStudentWithGuardian() {
+
+        Guardian guardian = Guardian.builder()
+                .name("Ana")
+                .email("ana@gmail.com")
+                .mobile("123729132983")
+                .build();
+
+        Student student = Student.builder()
+                .firstName("Jonas")
+                .email("Jonas@gmail.com")
+                .lastName("Silva")
+                .guardian(guardian)
                 .build();
 
         studentRepository.save(student);
