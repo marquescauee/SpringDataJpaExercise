@@ -6,6 +6,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Data
 @NoArgsConstructor
@@ -21,5 +24,11 @@ public class Course {
 
     private String title;
     private Integer credit;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_teacher", referencedColumnName = "idTeacher")
+    private Teacher teacher;
+
+
 
 }

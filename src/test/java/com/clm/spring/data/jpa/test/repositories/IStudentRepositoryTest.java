@@ -1,7 +1,9 @@
 package com.clm.spring.data.jpa.test.repositories;
 
+import com.clm.spring.data.jpa.test.models.Course;
 import com.clm.spring.data.jpa.test.models.Guardian;
 import com.clm.spring.data.jpa.test.models.Student;
+import com.clm.spring.data.jpa.test.models.Teacher;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -79,5 +81,29 @@ class IStudentRepositoryTest {
     @Test
     public void updateStudentNameByEmail() {
         studentRepository.updateStudentNameByEmail("Lucas", "caue@gmail.com");
+    }
+
+    @Test
+    public void saveStudentWithCourseAndTeacher() {
+        Teacher teacher = Teacher.builder()
+                .firstName("Pam")
+                .lastName("Marq")
+                .build();
+
+        Student student = Student.builder()
+                .firstName("Cauê")
+                .lastName("Lopes")
+                .email("cauezitos@hotmail.com")
+                .build();
+
+        Course course = Course.builder()
+                .title("javascript")
+                .credit(3)
+                .teacher(teacher)
+                .build();
+
+        student.addCourse(course);
+
+        studentRepository.save(student);
     }
 }

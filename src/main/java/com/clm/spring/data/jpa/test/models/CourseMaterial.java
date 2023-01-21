@@ -18,7 +18,7 @@ public class CourseMaterial {
 
     private String url;
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "id_course", referencedColumnName = "idCourse")
     private Course course;
 }
